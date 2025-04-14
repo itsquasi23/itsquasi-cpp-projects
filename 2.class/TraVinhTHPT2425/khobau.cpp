@@ -2,8 +2,17 @@
 //MΔDE BY ITSQUΔSI
 #include <bits/stdc++.h>
 #define ll long long
+#define ld long double
 
 using namespace std;
+
+ll divs(ll x){
+    int t = 1;
+    for (int i = 2; i * i <= x; ++i){
+        t += (i + x / i) * (x % i == 0) - i * (i * i == x);
+    }
+    return t;
+}
 
 int main()
 {
@@ -14,6 +23,12 @@ int main()
     }*/
     ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);
     //Code goes here:
-    cout << "It works!\n";
+    int l,r;
+    cin >> l >> r;
+    int t = 0;
+    for (int i = l; i <= r; ++i){
+        if (divs(i) > i) ++t;
+    }
+    cout << t;
     return 0;
 }
