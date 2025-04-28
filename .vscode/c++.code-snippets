@@ -39,5 +39,25 @@
 			"}"
 		],
 		"description": "The code template"
+	},
+	"The code template 2": {
+		"prefix": "#include <iostream>",
+		"body": [
+			"//Chasing the goal...",
+			"//MΔDE BY ITSQUΔSI",
+			"#include <iostream>",
+			"#define ll long long",
+			"#define ld long double",
+			"",
+			"using namespace std;",
+			"",
+			"int main()",
+			"{",
+			"    ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);",
+			"    ",
+			"    return 0;",
+			"}"
+		],
+		"description": "The code template 2"
 	}
 }
