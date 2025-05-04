@@ -18,7 +18,7 @@
 	"The code template": {
 		"prefix": "base",
 		"body": [
-			"//Chasing the goal...",
+			"//Goal: Get into CLC",
 			"//MΔDE BY ITSQUΔSI",
 			"#include <bits/stdc++.h>",
 			"#define ll long long",
@@ -43,7 +43,7 @@
 	"The code template 2": {
 		"prefix": "#include <iostream>",
 		"body": [
-			"//Chasing the goal...",
+			"//Goal: Get into CLC",
 			"//MΔDE BY ITSQUΔSI",
 			"#include <iostream>",
 			"#define ll long long",
