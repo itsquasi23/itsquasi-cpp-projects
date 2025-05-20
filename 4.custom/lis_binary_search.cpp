@@ -2,19 +2,11 @@
 //MΔDE BY ITSQUΔSI
 #include <bits/stdc++.h>
 #define ll long long
-#define ld long double
 
 using namespace std;
 
-ll divisor[1000006];
-
-void divisor_sieve(){
-    for (int i = 1; i < 1000006; ++i){
-        for (int j = i; j < 1000006; j += i){
-            divisor[j]++;
-        }
-    }
-}
+ll a[1000006];
+int f[1000006];
 
 int main()
 {
@@ -24,10 +16,15 @@ int main()
         freopen(".out", "w", stdout);
     }*/
     ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);
-    //Code goes here:
-    divisor_sieve();
-    int t;
-    cin >> t;
-    cout << divisor[t];
+    int n;
+    cin >> n;
+    for (int i = 1; i <= n; ++i) cin >> a[i];
+    int mx = 0;
+    for (int i = 1; i <= n; ++i){
+        int j = lower_bound(f + 1, f + 1 + mx, a[i]) - f;
+        f[j] = a[i];
+        mx = max(mx, j);
+    }
+    cout << mx;
     return 0;
 }
