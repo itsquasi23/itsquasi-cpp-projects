@@ -15,49 +15,34 @@
 	// 	],
 	// 	"description": "Log output to console"
 	// }
-	"The code template": {
+	"Code Template": {
 		"prefix": "base",
 		"body": [
 			"//Goal: Get into CLC",
 			"//MΔDE BY ITSQUΔSI",
 			"#include <bits/stdc++.h>",
 			"#define ll long long",
-			"#define ld long double",
 			"",
 			"using namespace std;",
 			"",
 			"int main()",
 			"{",
-			"    /*if (fopen(\".inp\",\"r\"))",
+			"    ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);",
+			"    ",
+			"    return 0;",
+			"}"
+		],
+		"description": "Code Template"
+	},
+	"In-Out with file": {
+		"prefix": "freopen",
+		"body": [
+			"if (fopen(\".inp\",\"r\"))",
 			"    {",
 			"        freopen(\".inp\", \"r\", stdin);",
 			"        freopen(\".out\", \"w\", stdout);",
-			"    }*/",
-			"    ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);",
-			"    ",
-			"    return 0;",
-			"}"
+			"    }"
 		],
-		"description": "The code template"
-	},
-	"The code template 2": {
-		"prefix": "#include <iostream>",
-		"body": [
-			"//Goal: Get into CLC",
-			"//MΔDE BY ITSQUΔSI",
-			"#include <iostream>",
-			"#define ll long long",
-			"#define ld long double",
-			"",
-			"using namespace std;",
-			"",
-			"int main()",
-			"{",
-			"    ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);",
-			"    ",
-			"    return 0;",
-			"}"
-		],
-		"description": "The code template 2"
+		"description": "In-Out with file"
 	}
 }
