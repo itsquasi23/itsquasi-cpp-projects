@@ -9,7 +9,7 @@ using namespace std;
 ll fastpow(ll x, ll y){
     ll res = 1;
     while (y){
-        if (y & 1) res = res * x;
+        if (y & 1) res = (res * x);
         x = x * x, y /= 2;
     }
     return res;

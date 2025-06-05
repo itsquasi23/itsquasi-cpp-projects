@@ -23,6 +23,7 @@ int main()
     for (int i = 1; i <= n; ++i){
         int j = lower_bound(f + 1, f + 1 + mx, a[i]) - f;
         f[j] = a[i];
+        cout << j << " " << f[j] << "\n";
         mx = max(mx, j);
     }
     cout << mx;
