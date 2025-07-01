@@ -18,7 +18,7 @@
 	"Code Template": {
 		"prefix": "base",
 		"body": [
-			"//Goal: Get into CLC",
+			"//Welcome to your new home, CLCer ItsQuasi!",
 			"//MΔDE BY ITSQUΔSI",
 			"#include <bits/stdc++.h>",
 			"#define ll long long",
