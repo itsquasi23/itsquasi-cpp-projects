@@ -1,4 +1,4 @@
-//Goal: Get into CLC
+//Welcome to your new home, CLCer ItsQuasi!
 //MΔDE BY ITSQUΔSI
 #include <bits/stdc++.h>
 #define ll long long
@@ -49,12 +49,22 @@ ll sum_div(ll n){
     if (n != 1) res *= (n * n - 1) / (n - 1);
     return res;
 }
+
 int main()
 {
     ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);
     sieve();
-    ll n;
+    int n;
     cin >> n;
-    cout << sum_div(n);
+    vector<ll> kbc;
+    while (n--){
+        ll a;
+        cin >> a;
+        if (2 * a <= sum_div(a)) kbc.push_back(a);
+    }
+    cout << kbc.size() << "\n";
+    for (ll i : kbc){
+        cout << i << "\n";
+    }
     return 0;
 }

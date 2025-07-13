@@ -4,79 +4,37 @@
 #define ll long long
 
 using namespace std;
-
-ll d(ll a, ll b){
-    return __gcd(a,b);
-}
-
-ll m(ll a,ll b){
-    return a * b / __gcd(a,b);
-}
-
-bool prime[1000006];
-
-void sieve(){
-    prime[0] = prime[1] = 1;
-    for (int i = 2; i * i < 1000006; ++i){
-        if (!prime[i]){
-            for (int j = i * i; j < 1000006; j += i){
-                prime[j] = 1;
-            }
-        }
+ll gcd(ll a, ll b) {
+    while (b != 0) {
+        ll r = a % b;
+        a = b;
+        b = r;
     }
+    return a;
 }
-
-ll find(ll x){
-    int t = 0;
-    for (int m = 1; m * m <= x; ++m){
-        if (x % m == 0){
-            ll n = x / m;
-            if (d(m,n) == 1){
-                t++;
-                if (m != n) t++;
-            }
-        }
-    }
-    return t;
-}
-
-
 int main()
 {
     ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);
-    /*ll c,d;
+    ll c,d;
     cin >> c >> d;
-    ll sum = LLONG_MAX;
-    bool f = 0;
-    for (int i = 1; i * i <= d; ++i){
-        if (d % i == 0){
-            ll a = 1ll * i;
-            ll b = d / a * c;
-            if (__gcd(a,b) == c) sum = min(sum, a + b), f = 1;
-        }
+    if (d % (c) != 0) {
+        cout << -1;
+        return 0;
     }
-    if (f) cout << sum;
-    else cout << -1;*/
-    int n;
-    cin >> n;
-    while (n--){
-        ll x;
-        int t = 0;
-        cin >> x;
-        ll ans = 0;
-        for (int i = 1; i * i <= x; ++i){
-            if (x % i == 0){
-                ll k = x / i + 1;
-                ans += find(k);
-
-                if (i * i != x){
-                    ll x2 = x / i;
-                    ll k2 = x / x2 + 1;
-                    ans += find(k2);
-                }
+    ll res = LLONG_MAX , t = d/(c);
+    bool f = 0;
+     for (ll i = 1; i * i <= t; ++i) {
+        if (t % i == 0) {
+            ll x = i;
+            ll y = t / i;
+            if (gcd(x, y) == 1) {
+                ll sum = c * (x + y);
+                if (sum < res) res = sum , f = 1;
             }
         }
-        cout << ans << "\n";
     }
+    if(f)
+    cout << res;
+    else cout << -1;
     return 0;
 }
