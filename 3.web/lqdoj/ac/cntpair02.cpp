@@ -5,19 +5,21 @@
 
 using namespace std;
 
-ll a[1000006], b[1000006];
+unordered_map<ll,ll> kien;
 
 int main()
 {
     ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);
-    int n, m;
+    int n;
     ll k;
-    cin >> n >> m >> k;
-    for (int i = 1; i <= n; ++i){
-        cin >> a[i];
+    cin >> n >> k;
+    ll c = 0;
+    while (n--){
+        ll a;
+        cin >> a;
+        c += kien[k - a];
+        kien[a]++;
     }
-    for (int i = 1; i <= m; ++i){
-        cin >> b[i];
-    }
+    cout << c;
     return 0;
 }
