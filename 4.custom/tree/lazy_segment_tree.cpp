@@ -10,7 +10,26 @@ const int INF = 1000000009;
 
 int n,q;
 ll a[ARR];
-ll st[ARR * 4];
+ll st[ARR * 4], lazy[ARR * 4];
+
+void push(int id, int l, int r) {
+    if (lazy[id]) {
+        st[id] += lazy[id];
+        /*
+        When update min/max: st[id] += lazy[id];
+        When update sum: st[id] += lazy[id] * (r - l + 1);
+        With sum at get:
+        (+) st[id] += (r - l + 1) * x;
+        (*) st[id] *= x;
+        (=) st[id] = (r - l + 1) * x;
+        */
+        if (l != r) {
+            lazy[id << 1] += lazy[id];
+            lazy[id << 1 | 1] += lazy[id];
+        }
+        lazy[id] = 0;
+    }
+}
 
 void build(int id, int l, int r){
     if (l == r){
@@ -24,20 +43,25 @@ void build(int id, int l, int r){
     st[id] = min(st[2 * id], st[2 * id + 1]);
 }
 
-void update(int id, int l, int r, int i, ll val){
-    if (i < l || i > r) return;
-    if (l == r){
-        st[id] = val;
+void update(int id, int l, int r, int u, int v, ll val) {
+    push(id, l, r);
+
+    if (v < l || r < u) return;
+    if (u <= l && r <= v) {
+        lazy[id] += val;
+        push(id, l, r);
         return;
     }
     int mid = l + r >> 1;
-    update(2 * id, l, mid, i, val);
-    update(2 * id + 1, mid + 1, r, i, val);
+    update(2 * id, l, mid, u, v, val);
+    update(2 * id + 1, mid + 1, r, u, v, val);
 
     st[id] = min(st[2 * id], st[2 * id + 1]);
 }
 
 ll get(int id, int l, int r, int u, int v) {
+    push(id, l, r);
+
     if (v < l || r < u) return INF;
 
     if (u <= l && r <= v) return st[id];
@@ -58,10 +82,14 @@ int main()
 
     cin >> q;
     while (q--){
-        int type, x, y;
-        cin >> type >> x >> y;
-        if (type == 1) update(1, 1, n, x, y);
-        else cout << get(1, 1, n, x, y) << '\n';
+        ll l, u, v;
+        cin >> l >> u >> v;
+        if (l == 1){
+            ll x;
+            cin >> x;
+            update(1, 1, n, u, v, x);
+        }
+        else cout << get(1, 1, n, u, v);
     }
     return 0;
 }

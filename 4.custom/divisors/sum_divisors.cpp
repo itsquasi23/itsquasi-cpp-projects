@@ -44,7 +44,7 @@ ll sum_div(ll n){
             n /= i;
             c++;
         }
-        res *= (fastpow(i,c + 1) - 1) / (i - 1);
+        res *= (fastpow(i, c + 1) - 1) / (i - 1);
     }
     if (n != 1) res *= (n * n - 1) / (n - 1);
     return res;
